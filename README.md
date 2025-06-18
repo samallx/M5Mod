@@ -1,10 +1,18 @@
 # M5Mod
 You need:
-  A soldering iron and skill
-  Money (under 15$ for 10 boards)
-  Patience
-  Brain
-  curved header pins (https://nl.aliexpress.com/item/1005006783115757.html):
+
+  A soldering iron and skill,
+
+  Money (under 15$ for 10 boards),
+  
+  Patience,
+  
+  Brain,
+  
+  "hy2.0 4p" cable or any jumper cable that you can cut.
+  
+  "curved header pins" (https://nl.aliexpress.com/item/1005006783115757.html):
+  
   ![image](https://github.com/user-attachments/assets/841323ce-b653-4e09-b451-ba94f7f360e3)
 
   
@@ -16,9 +24,11 @@ You need:
 2. go to [jlc pcb](https://jlcpcb.com/) / https://pcbway.com/ and order the pcb (YOU CAN CHOOSE THE SHIPPING OPTION, THE STANDARD ONE IS 20$, CHOOSE ONE THAT YOU CAN AFFORD!!!)
 
   Upload the Gerber you downloaded earlier
+  
   ![image](https://github.com/user-attachments/assets/91def4a5-9af6-4e57-bf2a-5c513a6e9854)
   
   make sure your settings are like this(theese should apply automaticly) and choose your pcb color
+  
   ![image](https://github.com/user-attachments/assets/07e3cfc7-52f7-46c7-9bba-d95d8b69a0d1)
 
 3. Order parts from aliexpress
@@ -30,6 +40,7 @@ You need:
   https://aliexpress.com/item/1005006228736157.html
   
   MAKE SURE TO CHOOSE THIS ONE
+  
   ![image](https://github.com/user-attachments/assets/4fd770f1-2071-4091-80e4-94bb85c71cee)
   
   
@@ -40,6 +51,7 @@ You need:
   https://aliexpress.com/item/1005008756322208.html
   
   MAKE SURE TO CHOOSE THE 0603 (for me its 4 last), and then any color you want
+  
   ![image](https://github.com/user-attachments/assets/cb2b9f4a-7374-4232-9607-96fb3bcdd5ca)
   
   

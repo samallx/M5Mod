@@ -1,51 +1,44 @@
-Sure! Here's a cleaner, clearer, and better-organized version of your instructions:
+# Flashing ATtiny13A Using Arduino or ESP as ISP Programmer
 
----
 
-# Flashing ATtiny13A Using Arduino or ESP Boards
 
----
+## What You Need
 
-## For Arduino as ISP
+| Item                      | Notes                                                             |
+| ------------------------- | ----------------------------------------------------------------- |
+| ATtiny13A chip            | Your target microcontroller                                       |
+| Programmer                | Either **Arduino** (Uno, Nano, etc.) or **ESP** (ESP8266 / ESP32) |
+| Breadboard & jumper wires | For wiring connections                                            |
+| USB cable                 | To connect your programmer to PC                                  |
+| AVR-GCC and AVRDUDE       | Installed on your PC (or use Arduino IDE)                         |
 
-### What you need:
 
-* ATtiny13A chip
-* Arduino board (Uno, Nano, etc.)
-* Breadboard & jumper wires
-* AVR-GCC and AVRDUDE installed (or Arduino IDE with setup)
 
----
+## Step 1: Prepare Your Programmer
 
-### 1. Prepare Arduino as ISP
+| Programmer         | Instructions                                                                                                                                                                                                              |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Arduino as ISP** | 1. Connect Arduino to PC via USB.<br>2. Open Arduino IDE.<br>3. Load **File > Examples > 11.ArduinoISP > ArduinoISP**.<br>4. Upload the sketch to Arduino.                                                                |
+| **ESP as ISP**     | 1. Connect ESP board to PC via USB.<br>2. Open Arduino IDE.<br>3. Upload a compatible **ArduinoISP sketch for ESP** (available online or ask me).<br>4. Make sure to note the GPIO pins used and baud rate in the sketch. |
 
-* Connect your Arduino to your PC.
-* Open Arduino IDE.
-* Navigate to **File > Examples > 11.ArduinoISP > ArduinoISP**.
-* Upload the **ArduinoISP** sketch to your Arduino.
 
----
 
-### 2. Wire the ATtiny13A to Arduino
+## Step 2: Wire Your Programmer to the ATtiny13A
 
-| ATtiny13A Pin | Arduino Pin    |
-| ------------- | -------------- |
-| Pin 1 (RESET) | Arduino Pin 10 |
-| Pin 5 (MOSI)  | Arduino Pin 11 |
-| Pin 6 (MISO)  | Arduino Pin 12 |
-| Pin 7 (SCK)   | Arduino Pin 13 |
-| Pin 4 (GND)   | Arduino GND    |
-| Pin 8 (VCC)   | Arduino 5V     |
+| ATtiny13A Pin | Arduino Pin    | ESP GPIO Pin (example)               |
+| ------------- | -------------- | ------------------------------------ |
+| Pin 1 (RESET) | Arduino Pin 10 | GPIO0                                |
+| Pin 5 (MOSI)  | Arduino Pin 11 | GPIO13                               |
+| Pin 6 (MISO)  | Arduino Pin 12 | GPIO12                               |
+| Pin 7 (SCK)   | Arduino Pin 13 | GPIO14                               |
+| Pin 4 (GND)   | Arduino GND    | GND                                  |
+| Pin 8 (VCC)   | Arduino 5V     | 3.3V or 5V (check ESP voltage level) |
 
-![Wiring diagram](https://github.com/user-attachments/assets/ff39ef6c-ca86-40c7-b13f-5aa53650ad49)
 
----
 
-### 3. Write and save your `.c` code
+## Step 3: GET YOUR CODE READY
 
----
-
-### 4. Compile your code to `.hex`
+## Step 4: Compile Your Code to a `.hex` File
 
 Run these commands in your terminal:
 
@@ -54,78 +47,33 @@ avr-gcc -mmcu=attiny13 -Os -o yourprogram.elf yourprogram.c
 avr-objcopy -O ihex yourprogram.elf yourprogram.hex
 ```
 
----
 
-### 5. Flash your `.hex` file to ATtiny13A
+## Step 5: Flash the `.hex` File to ATtiny13A
 
-Run this command (replace `COM3` with your Arduino’s serial port):
-
-```bash
-avrdude -c arduino -p attiny13 -P COM3 -b 19200 -U flash:w:yourprogram.hex
-```
-
----
-
-### 6. Done!
-
-Your ATtiny13A is now programmed and ready to use.
-
----
-
-## For ESP32/ESP8266
-
-### What you need:
-
-* ESP board (ESP8266 or ESP32)
-* USB cable
-* Arduino IDE (or ESP-IDF if using native ESP toolchain)
-
----
-
-### 1. Set up Arduino IDE for ESP boards
-
-* Open Arduino IDE.
-* Go to **File > Preferences**.
-* In **Additional Boards Manager URLs**, add:
-
-  * For ESP8266:
-    `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
-  * For ESP32:
-    `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json`
-* Open **Tools > Board > Boards Manager**, search for **ESP8266** or **ESP32**, then install the package.
-
----
-
-### 2. Select your ESP board and port
-
-* Go to **Tools > Board** and select your ESP model.
-* Connect your ESP via USB.
-* Select the correct port under **Tools > Port**.
-
----
-
-### 3. Prepare your `.c` code
-
----
-
-### 4. Compile and upload your code
-
-* **Arduino IDE:** Simply hit **Upload**; the IDE will compile and flash automatically.
-* **ESP-IDF:** Use the terminal commands inside your project folder:
+Run the following `avrdude` command. Replace `PORT` and `BAUDRATE` accordingly:
 
 ```bash
-idf.py build
-idf.py -p /dev/ttyUSB0 flash
+avrdude -c arduino -p attiny13 -P PORT -b BAUDRATE -U flash:w:yourprogram.hex
 ```
 
-*(Replace `/dev/ttyUSB0` with your serial port)*
+| Programmer  | Typical PORT                                     | Typical BAUDRATE               |
+| ----------- | ------------------------------------------------ | ------------------------------ |
+| Arduino ISP | `COM3` (Windows) or `/dev/ttyUSB0` (Linux/macOS) | 19200                          |
+| ESP ISP     | ESP serial port (e.g., `/dev/ttyUSB0`)           | 115200 or 19200 (check sketch) |
 
 ---
 
-### 5. Done!
+## Step 6: Done!
 
-Your ESP board is now programmed and running your code.
+Your ATtiny13A is now flashed and ready to run your custom code.
 
----
 
-If you want me to help you with installing tools, setting ports, or anything else, just ask!
+# Summary Table
+
+| Step           | Arduino ISP                           | ESP ISP                                                                     |
+| -------------- | ------------------------------------- | --------------------------------------------------------------------------- |
+| Setup sketch   | Upload ArduinoISP sketch              | Upload ESP ArduinoISP sketch                                                |
+| Wiring         | Use Arduino pins 10,11,12,13          | Use specified GPIO pins (e.g., 0,13,12,14)                                  |
+| Voltage level  | 5V (Arduino 5V)                       | Usually 3.3V (check ATtiny specs!)                                          |
+| Compile `.hex` | Same commands for both                | Same commands for both                                                      |
+| Flash command  | `avrdude -c arduino -P COM3 -b 19200` | `avrdude -c arduino -P /dev/ttyUSB0 -b 115200` (baud depends on ESP sketch) |

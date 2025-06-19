@@ -1,4 +1,5 @@
-# M5Mod
+# M5Mod 
+#  THE FIRMWARE HASN"T BEEN MADE YET, I DON"T EVEN KNOW IF THE PCB WORKS!! ORDER AT YOUR OWN RISK!
 You need:
 
   A soldering iron and skill,
@@ -10,6 +11,8 @@ You need:
   Brain,
   
   "hy2.0 4p" cable or any jumper cable that you can cut.
+
+  Any arduino with ICSP pins
   
   "curved header pins" (https://nl.aliexpress.com/item/1005006783115757.html):
   

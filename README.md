@@ -1,5 +1,10 @@
 # M5Mod 
 #  THE FIRMWARE HASN"T BEEN MADE YET, I DON"T EVEN KNOW IF THE PCB WORKS!! ORDER AT YOUR OWN RISK!
+
+                                                  ![flamingtext_com-1755321953](https://github.com/user-attachments/assets/bf217e29-a09b-4536-9512-6b1f3cf52bb9)
+
+
+
 You need:
 
   A soldering iron and skill,
